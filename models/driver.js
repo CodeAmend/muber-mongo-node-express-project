@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-cons Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const DriverSchema = Schema({
   email: {
@@ -15,6 +15,6 @@ const DriverSchema = Schema({
 });
 
 
-const Driver = mongose.model('driver', DriverSchema);
+const Driver = mongoose.model('driver', DriverSchema);
 
 module.exports = Driver;
