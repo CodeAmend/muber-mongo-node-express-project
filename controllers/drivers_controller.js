@@ -9,5 +9,13 @@ module.exports = {
     Driver.create(driverProps)
       .then(driver => res.send(driver))
       .catch(next);
+  },
+  edit(req, res, next) {
+    const _id = req.params.id;
+    const driverProps = req.body
+    Driver.findByIdAndUpdate(
+      { _id }, driverProps, { new: true })
+      .then(driver => res.send(driver))
+      .catch(next);
   }
 }
