@@ -27,4 +27,24 @@ describe("Drivers controller", () => {
     })
   });
 
+  it("PUT to /api/drivers/:id ", (done) => {
+    const driver = new Driver({
+      email: "fake_email@faker.com",
+      driving: false
+    })
+    driver.save()
+      .then(() => {
+        request(app)
+          .put(`/api/drivers/${driver._id}`)
+          .send({ driving: true })
+          .end(() => {
+            Driver.findOne({ email: "fake_email@faker.com" })
+              .then(updated_driver => {
+                assert(updated_driver.driving === true);
+                done();
+              })
+          })
+      })
+  });
+
 });
