@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+const PointSchema = mongoose.Schema({
+  type: { type: String, defualt: 'Point'},
+  coordinates: { type: [Number], index: '2dsphere' }
+});
+
 const DriverSchema = Schema({
   email: {
     type: String,
@@ -11,7 +16,7 @@ const DriverSchema = Schema({
     type: Boolean,
     default: false
   },
-  // loction: ???
+  geometry: PointSchema
 });
 
 
